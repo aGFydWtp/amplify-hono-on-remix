@@ -1,9 +1,10 @@
-# amplify-hono-on-remix
+# amplify-express-on-remix
 
 Stack:
 
-- Hono
+- Express
 - Remix
+- Vite
 - Amplify
 
 ## Usage
@@ -12,4 +13,10 @@ Install:
 
 ```
 bun install -y
+```
+
+Run:
+
+```
+bun dev
 ```
