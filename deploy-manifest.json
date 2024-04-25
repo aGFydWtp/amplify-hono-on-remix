@@ -40,7 +40,7 @@
     {
       "name": "default",
       "runtime": "nodejs20.x",
-      "entrypoint": "build/server/index.js"
+      "entrypoint": "server/index.js"
     }
   ]
 }
