@@ -1,19 +1,30 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "start": "tsx watch src/index.ts",
-    "build": "tsc",
-    "serve": "tsx watch src/index.ts",
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "start": "remix-serve ./build/server/index.js",
     "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
   },
   "dependencies": {
     "@hono/node-server": "^1.11.0",
-    "hono": "^4.2.7"
+    "@remix-run/node": "^2.9.1",
+    "@remix-run/react": "^2.9.1",
+    "@remix-run/serve": "^2.9.1",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "hono": "^4.2.7",
+    "isbot": "4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remix": "^2.9.1",
+    "remix-hono": "^0.0.16"
   },
   "devDependencies": {
+    "@remix-run/dev": "^2.9.1",
     "@types/node": "^20.12.7",
     "prettier": "^3.2.5",
-    "tsx": "^4.7.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10"
   }
 }
