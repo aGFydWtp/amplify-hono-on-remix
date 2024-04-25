@@ -5,7 +5,8 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "start": "bun server.js",
-    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
+    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh",
+    "check-lock": "diff <(bun bun.lockb) yarn.lock"
   },
   "dependencies": {
     "@remix-run/css-bundle": "^2.9.1",
