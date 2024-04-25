@@ -3,5 +3,6 @@ dist
 .amplify-hosting
 .dev.vars
 .DS_Store
+build
 
 # Change them to your taste:
