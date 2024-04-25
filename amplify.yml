@@ -3,10 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install
+        - yarn install --prod
     build:
       commands:
-        - yarn run build
+        - yarn run build && rm -rf node_modules
   artifacts:
     baseDirectory: .amplify-hosting
     files:
