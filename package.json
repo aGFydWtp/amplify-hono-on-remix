@@ -3,26 +3,23 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "bun server.js",
     "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
   },
   "dependencies": {
-    "@hono/node-server": "^1.11.0",
+    "@remix-run/express": "^2.9.1",
     "@remix-run/node": "^2.9.1",
     "@remix-run/react": "^2.9.1",
-    "@remix-run/serve": "^2.9.1",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
-    "hono": "^4.2.7",
+    "cross-env": "^7.0.3",
+    "express": "^4.19.2",
     "isbot": "4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remix": "^2.9.1",
-    "remix-hono": "^0.0.16"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.1",
-    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "vite": "^5.2.10"
