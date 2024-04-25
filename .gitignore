@@ -1,0 +1,7 @@
+node_modules
+dist
+.amplify-hosting
+.dev.vars
+.DS_Store
+
+# Change them to your taste:

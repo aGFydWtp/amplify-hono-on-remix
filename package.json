@@ -1,0 +1,19 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "start": "tsx watch src/index.ts",
+    "build": "bunx tsc",
+    "serve": "tsx watch src/index.ts",
+    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.0",
+    "hono": "^4.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}
