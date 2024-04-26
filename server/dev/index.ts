@@ -5,7 +5,7 @@ import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { remix } from 'remix-hono/handler';
 import { cache } from 'server/middlewares';
-import { importDevBuild } from './dev/server.js';
+import { importDevBuild } from './server';
 
 const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
 
@@ -76,7 +76,7 @@ app.use(async (c, next) => {
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line import/no-unresolved -- this expected until you build the app
-      await import('../build/server/remix.js')
+      await import('../../build/server/remix.js')
     : await importDevBuild()) as unknown as ServerBuild;
 
   return remix({

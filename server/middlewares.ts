@@ -1,4 +1,4 @@
-import { createMiddleware } from "hono/factory";
+import { createMiddleware } from 'hono/factory';
 
 /**
  * Cache middleware
@@ -7,7 +7,7 @@ import { createMiddleware } from "hono/factory";
  */
 export function cache(seconds: number) {
   return createMiddleware(async (c, next) => {
-    if (!c.req.path.match(/\.[a-zA-Z0-9]+$/) || c.req.path.endsWith(".data")) {
+    if (!/\.[\dA-Za-z]+$/.test(c.req.path) || c.req.path.endsWith('.data')) {
       return next();
     }
 
@@ -17,6 +17,6 @@ export function cache(seconds: number) {
       return;
     }
 
-    c.res.headers.set("cache-control", `public, max-age=${seconds}`);
+    c.res.headers.set('cache-control', `public, max-age=${seconds}`);
   });
 }
