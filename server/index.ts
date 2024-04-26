@@ -1,11 +1,12 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { type AppLoadContext, type ServerBuild } from '@remix-run/node';
+import { type AppLoadContext } from '@remix-run/node';
+// import { type AppLoadContext, type ServerBuild } from '@remix-run/node';
 import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { remix } from 'remix-hono/handler';
 import { cache } from 'server/middlewares';
-import { importDevBuild } from './dev/server';
+// import { importDevBuild } from './dev/server';
 
 const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
 
@@ -72,12 +73,13 @@ app.use('*', logger());
  * Add remix middleware to Hono server
  */
 app.use(async (c, next) => {
-  const build = (isProductionMode
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      // eslint-disable-next-line import/no-unresolved -- this expected until you build the app
-      await import('../build/server/remix.js')
-    : await importDevBuild()) as unknown as ServerBuild;
+  // const build = (isProductionMode
+  //   ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //     // @ts-ignore
+  //     // eslint-disable-next-line import/no-unresolved -- this expected until you build the app
+  //     await import('../build/server/remix.js')
+  //   : await importDevBuild()) as unknown as ServerBuild;
+  const build = await import('../build/server/remix.js');
 
   return remix({
     build,
