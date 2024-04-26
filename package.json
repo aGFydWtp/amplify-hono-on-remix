@@ -4,7 +4,7 @@
     "prepare": "panda codegen",
     "build": "remix vite:build",
     "dev": "bunx vite --host",
-    "start": "NODE_ENV=production SESSION_SECRET=s3cr3t node ./build/server/index.js",
+    "start": "NODE_ENV=production node ./build/server/index.js",
     "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh",
     "check-lock": "diff <(bun bun.lockb) yarn.lock"
   },
