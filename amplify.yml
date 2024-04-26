@@ -8,12 +8,8 @@ frontend:
         - bun install
     build:
       commands:
-        - echo "NODE_ENV=$NODE_ENV" >> .env
-        - bun run build
+        - NODE_ENV=production bun run build
   artifacts:
     baseDirectory: .amplify-hosting
     files:
       - '**/*'
-  # cache:
-  #   paths:
-  #     - node_modules/**/*

@@ -1,10 +1,17 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { type AppLoadContext } from '@remix-run/node';
+import { type AppLoadContext, type ServerBuild } from '@remix-run/node';
 import { Hono } from 'hono';
 import { logger } from 'hono/logger';
 import { remix } from 'remix-hono/handler';
 import { cache } from 'server/middlewares';
+import { importDevBuild } from './dev/server.js';
+
+const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
+
+const isProductionMode = mode === 'production';
+console.log(`Running in ${mode} mode`);
+
 const app = new Hono();
 
 /**
@@ -19,7 +26,7 @@ app.use(
 /**
  * Serve public files
  */
-app.use('*', cache(60 * 60), serveStatic({ root: './build/client' })); // 1 hour
+app.use('*', cache(60 * 60), serveStatic({ root: isProductionMode ? './build/client' : './public' })); // 1 hour
 
 /**
  * Add logger middleware
@@ -65,14 +72,19 @@ app.use('*', logger());
  * Add remix middleware to Hono server
  */
 app.use(async (c, next) => {
-  const build = await import('../build/server/remix.js');
+  const build = (isProductionMode
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line import/no-unresolved -- this expected until you build the app
+      await import('../build/server/remix.js')
+    : await importDevBuild()) as unknown as ServerBuild;
 
   return remix({
     build,
-    mode: 'production',
+    mode,
     getLoadContext() {
       return {
-        appVersion: build.assets.version,
+        appVersion: isProductionMode ? build.assets.version : 'dev',
       } satisfies AppLoadContext;
     },
   })(c, next);
@@ -82,15 +94,17 @@ app.use(async (c, next) => {
  * Start the production server
  */
 
-serve(
-  {
-    ...app,
-    port: Number(process.env.PORT) || 3000,
-  },
-  async (info) => {
-    console.log(`🚀 Server started on port ${info.port}`);
-  }
-);
+if (isProductionMode) {
+  serve(
+    {
+      ...app,
+      port: Number(process.env.PORT) || 3000,
+    },
+    async (info) => {
+      console.log(`🚀 Server started on port ${info.port}`);
+    }
+  );
+}
 
 export default app;
 

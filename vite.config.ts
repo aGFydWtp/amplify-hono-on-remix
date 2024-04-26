@@ -19,7 +19,7 @@ export default defineConfig({
   plugins: [
     devServer({
       injectClientScript: false,
-      entry: 'server/index.ts', // The file path of your server.
+      entry: process.env.NODE_ENV === 'production' ? 'server/index.ts' : 'server/local.ts',
       exclude: [/^\/(app)\/.+/, /^\/@.+$/, /^\/node_modules\/.*/],
     }),
     tsconfigPaths(),
