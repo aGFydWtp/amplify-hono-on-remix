@@ -3,27 +3,31 @@
   "scripts": {
     "prepare": "panda codegen",
     "build": "remix vite:build",
-    "dev": "remix vite:dev",
-    "start": "bun server.js",
+    "dev": "bunx vite --host",
+    "start": "NODE_ENV=production SESSION_SECRET=s3cr3t node ./build/server/index.js",
     "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh",
     "check-lock": "diff <(bun bun.lockb) yarn.lock"
   },
   "dependencies": {
+    "@hono/node-server": "^1.11.0",
     "@remix-run/css-bundle": "^2.9.1",
     "@remix-run/express": "^2.9.1",
     "@remix-run/node": "^2.9.1",
     "@remix-run/react": "^2.9.1",
-    "cross-env": "^7.0.3",
-    "express": "^4.19.2",
+    "hono": "^4.2.7",
     "isbot": "4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-hono": "^0.0.16"
   },
   "devDependencies": {
+    "@hono/vite-dev-server": "^0.12.0",
     "@pandacss/dev": "^0.37.2",
     "@remix-run/dev": "^2.9.1",
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
+    "esbuild": "^0.20.2",
     "eslint": "^9.1.1",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",

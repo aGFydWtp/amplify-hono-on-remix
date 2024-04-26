@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "framework": { "name": "express", "version": "4.19.2" },
+  "framework": { "name": "hono", "version": "4.2.7" },
   "imageSettings": {
     "sizes": [100, 200, 1920],
     "domains": [],
@@ -40,7 +40,7 @@
     {
       "name": "default",
       "runtime": "nodejs20.x",
-      "entrypoint": "server.js"
+      "entrypoint": "build/server/index.js"
     }
   ]
 }

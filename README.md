@@ -1,8 +1,8 @@
-# amplify-express-on-remix
+# amplify-hono-on-remix
 
 Stack:
 
-- Express
+- Hono
 - Remix
 - Vite
 - Amplify
