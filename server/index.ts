@@ -8,7 +8,7 @@ import { remix } from 'remix-hono/handler';
 import { cache } from 'server/middlewares';
 // import { importDevBuild } from './dev/server';
 
-const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
+const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV ?? 'production';
 
 const isProductionMode = mode === 'production';
 console.log(`Running in ${mode} mode`);
