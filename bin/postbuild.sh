@@ -6,7 +6,7 @@ mkdir -p ./.amplify-hosting/compute/default
 
 cp -r ./build ./.amplify-hosting/compute/default/build
 cp -r bin/package.json ./.amplify-hosting/compute/default
-cp -r vite.config.ts ./.amplify-hosting/compute/default
+cp -r bin/vite.config.js ./.amplify-hosting/compute/default
 
 cp -r public ./.amplify-hosting/static
 
