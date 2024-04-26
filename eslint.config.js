@@ -16,7 +16,7 @@ const compat = new FlatCompat();
 
 export default tseslint.config(
   {
-    ignores: ['node_modules', '.cache', 'build', 'public/build', '.env'],
+    ignores: ['node_modules', 'build', 'app/styled-system', '.env', '.amplify-hosting'],
   },
   {
     ...eslint.configs.recommended,
@@ -42,6 +42,17 @@ export default tseslint.config(
     rules: {
       ...reactRecommended.rules,
       ...reactJSXRuntime.rules,
+      'unicorn/filename-case': 'off',
+      'unicorn/no-array-for-each': 'off',
+      'unicorn/no-useless-undefined': 'off',
+      'unicorn/numeric-separators-style': 'off',
+      'unicorn/prefer-spread': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/switch-case-braces': ['error', 'avoid'],
+      'unicorn/no-null': 'off',
+      'unicorn/no-array-reduce': 'off',
+      'unicorn/consistent-function-scoping': 'off',
+      'unicorn/template-indent': 'off',
     },
     languageOptions: {
       ...reactRecommended.languageOptions,
@@ -69,17 +80,6 @@ export default tseslint.config(
       'import/resolver': {
         typescript: {},
       },
-      'unicorn/filename-case': 'off',
-      'unicorn/no-array-for-each': 'off',
-      'unicorn/no-useless-undefined': 'off',
-      'unicorn/numeric-separators-style': 'off',
-      'unicorn/prefer-spread': 'off',
-      'unicorn/prevent-abbreviations': 'off',
-      'unicorn/switch-case-braces': ['error', 'avoid'],
-      'unicorn/no-null': 'off',
-      'unicorn/no-array-reduce': 'off',
-      'unicorn/consistent-function-scoping': 'off',
-      'unicorn/template-indent': 'off',
     },
   },
   {
