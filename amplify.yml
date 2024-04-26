@@ -3,10 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install --frozen-lockfile
+        - curl -fsSL https://bun.sh/install | bash
+        - bun install
     build:
       commands:
-        - yarn run build
+        - bun run build
   artifacts:
     baseDirectory: .amplify-hosting
     files:

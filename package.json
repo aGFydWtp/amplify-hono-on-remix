@@ -23,6 +23,7 @@
   "devDependencies": {
     "@hono/vite-dev-server": "^0.12.0",
     "@pandacss/dev": "^0.37.2",
+    "@pandacss/eslint-plugin": "^0.1.1",
     "@remix-run/dev": "^2.9.1",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
@@ -34,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.1",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.1",

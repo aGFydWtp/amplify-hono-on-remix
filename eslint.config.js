@@ -8,6 +8,9 @@ import reactJSXRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import unicornPlugin from 'eslint-plugin-unicorn';
+import pandaCssPlugin from '@pandacss/eslint-plugin';
 
 const compat = new FlatCompat();
 
@@ -49,6 +52,8 @@ export default tseslint.config(
       ['jsx-a11y']: jsxA11yPlugin,
     },
     extends: [
+      ...compat.config(pandaCssPlugin.configs.recommended),
+      ...compat.config(unicornPlugin.configs.recommended),
       ...compat.config(reactHooksPlugin.configs.recommended),
       ...compat.config(jsxA11yPlugin.configs.recommended),
     ],
@@ -64,12 +69,24 @@ export default tseslint.config(
       'import/resolver': {
         typescript: {},
       },
+      'unicorn/filename-case': 'off',
+      'unicorn/no-array-for-each': 'off',
+      'unicorn/no-useless-undefined': 'off',
+      'unicorn/numeric-separators-style': 'off',
+      'unicorn/prefer-spread': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/switch-case-braces': ['error', 'avoid'],
+      'unicorn/no-null': 'off',
+      'unicorn/no-array-reduce': 'off',
+      'unicorn/consistent-function-scoping': 'off',
+      'unicorn/template-indent': 'off',
     },
   },
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
       import: importPlugin,
+      ['unused-imports']: unusedImportsPlugin,
     },
     extends: [
       ...tseslint.configs.recommended,
@@ -77,7 +94,7 @@ export default tseslint.config(
       ...compat.config(importPlugin.configs.typescript),
     ],
     settings: {
-      'import/internal-regex': '^~/',
+      'import/internal-regex': '^@/',
       'import/resolver': {
         node: {
           extensions: ['.ts', '.tsx'],
@@ -86,6 +103,16 @@ export default tseslint.config(
           alwaysTryTypes: true,
         },
       },
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   {
