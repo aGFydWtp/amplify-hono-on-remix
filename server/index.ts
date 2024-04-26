@@ -10,6 +10,7 @@ import { importDevBuild } from './dev/server';
 const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
 
 const isProductionMode = mode === 'production';
+console.log(`Running in ${mode} mode`);
 
 const app = new Hono();
 
