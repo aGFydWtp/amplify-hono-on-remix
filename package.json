@@ -18,7 +18,8 @@
     "isbot": "4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remix-hono": "^0.0.16"
+    "remix-hono": "^0.0.16",
+    "vite": "^5.2.10"
   },
   "devDependencies": {
     "@hono/vite-dev-server": "^0.12.0",
@@ -40,7 +41,6 @@
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.1",
-    "vite": "^5.2.10",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }
