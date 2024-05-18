@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "panda codegen && husky",
     "build": "remix vite:build",
     "dev": "bunx vite --host",
     "start": "NODE_ENV=production node ./build/server/index.js",
