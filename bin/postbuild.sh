@@ -6,6 +6,7 @@ mkdir -p ./.amplify-hosting/compute/default
 
 cp -r ./build ./.amplify-hosting/compute/default/build
 cp -r ./package.json ./.amplify-hosting/compute/default
+cp -r ./bun.lockb ./.amplify-hosting/compute/default
 
 cp -r public ./.amplify-hosting/static
 
